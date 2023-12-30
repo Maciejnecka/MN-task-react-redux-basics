@@ -7,6 +7,22 @@
       "email": "jan@kowalski.not",
       "date": "2022-01-01",
       "time": "10:00"
+    },
+    {
+      "firstName": "Maciej",
+      "lastName": "Nęcka",
+      "email": "macieknecka@gmail.com",
+      "date": "2021-01-01",
+      "time": "10:00",
+      "id": 2
+    },
+    {
+      "firstName": "sdsds",
+      "lastName": "dsdsdsd",
+      "email": "macieknecka@gmail.com",
+      "date": "2021-01-01",
+      "time": "10:00",
+      "id": 3
     }
   ]
 }
