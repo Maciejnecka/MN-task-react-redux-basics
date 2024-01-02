@@ -87,6 +87,14 @@
       "date": "2021-01-01",
       "time": "10:00",
       "id": 11
+    },
+    {
+      "firstName": "Maciej",
+      "lastName": "Nęcka",
+      "email": "macieknecka@gmail.com",
+      "date": "2021-01-01",
+      "time": "10:00",
+      "id": 12
     }
   ]
 }

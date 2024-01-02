@@ -8,10 +8,6 @@ import { actions } from '../actions/meetingsSlice';
 class Calendar extends React.Component {
   apiUrl = 'http://localhost:3005/meetings';
 
-  state = {
-    meetings: [],
-  };
-
   loadMeetingsFromApi() {
     fetch(this.apiUrl)
       .then((resp) => {
@@ -71,13 +67,13 @@ class Calendar extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  meetings: state.meetings.meetings,
+});
+
 const mapDispatchToProps = {
   loadMeetings: actions.loadMeetings,
   saveMeeting: actions.saveMeeting,
 };
-
-const mapStateToProps = (state) => ({
-  meetings: state.meetings.meetings,
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calendar);

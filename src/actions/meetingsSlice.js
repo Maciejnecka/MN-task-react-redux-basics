@@ -1,4 +1,4 @@
-// src/meetings/meetingsSlice.js
+// src/actions/meetingsSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 export const meetingsSlice = createSlice({
