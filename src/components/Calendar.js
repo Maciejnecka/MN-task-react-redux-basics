@@ -1,10 +1,9 @@
 // src/components/Calendar.js
 import React from 'react';
 import { connect } from 'react-redux';
-
 import CalendarList from './CalendarList';
 import CalendarForm from './CalendarForm';
-import { actions } from '../meetings/meetingsSlice';
+import { actions } from '../actions/meetingsSlice';
 
 class Calendar extends React.Component {
   apiUrl = 'http://localhost:3005/meetings';
@@ -72,13 +71,13 @@ class Calendar extends React.Component {
   }
 }
 
-const mapActionToProps = {
+const mapDispatchToProps = {
   loadMeetings: actions.loadMeetings,
   saveMeeting: actions.saveMeeting,
 };
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
   meetings: state.meetings.meetings,
 });
 
-export default connect(mapStateToProps, mapActionToProps)(Calendar);
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar);
