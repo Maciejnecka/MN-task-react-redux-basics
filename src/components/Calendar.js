@@ -9,32 +9,13 @@ import {
 } from '../providers/apiProvider';
 
 class Calendar extends React.Component {
-  apiUrl = 'http://localhost:3005/meetings';
-
-  loadMeetingsFromApi() {
-    fetch(this.apiUrl)
-      .then((resp) => {
-        if (resp.ok) {
-          return resp.json();
-        }
-
-        throw new Error('Network error!');
-      })
-      .then((resp) => {
-        this.props.loadMeetings(resp);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-
   sendMeetingToApi = (meetingData) => {
-    sendMeetingToApi(meetingData, this.addMeetingToState.bind(this));
+    sendMeetingToApi(meetingData, this.addMeetingToState);
   };
 
-  addMeetingToState(meetingData) {
+  addMeetingToState = (meetingData) => {
     this.props.saveMeeting({ meeting: meetingData });
-  }
+  };
 
   componentDidMount() {
     loadMeetingsFromApi(this.props.loadMeetings);

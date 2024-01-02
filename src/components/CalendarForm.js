@@ -1,4 +1,5 @@
 import React from 'react';
+import validateFormFields from './utilities/formValidator';
 
 class CalendarForm extends React.Component {
   state = {
@@ -10,64 +11,31 @@ class CalendarForm extends React.Component {
     errors: [],
   };
 
+  formFields = [
+    { name: 'date', label: 'Data', placeholder: 'RRRR-MM-DD' },
+    { name: 'time', label: 'Godzina', placeholder: 'HH:MM' },
+    { name: 'firstName', label: 'Imię' },
+    { name: 'lastName', label: 'Nazwisko' },
+    { name: 'email', label: 'Email', placeholder: 'nazwa@poczty.pl' },
+  ];
+
   render() {
     return (
       <form action="" onSubmit={this.handleSubmit}>
         <ul>{this.renderErrors()}</ul>
-        <div>
-          <label>
-            Data:{' '}
-            <input
-              name="date"
-              onChange={this.handleFieldChange}
-              value={this.state.date}
-              placeholder="RRRR-MM-DD"
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Godzina:{' '}
-            <input
-              name="time"
-              onChange={this.handleFieldChange}
-              value={this.state.time}
-              placeholder="HH:MM"
-            />
-          </label>
-        </div>
-
-        <div>
-          <label>
-            Imię:{' '}
-            <input
-              name="firstName"
-              onChange={this.handleFieldChange}
-              value={this.state.firstName}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Nazwisko:{' '}
-            <input
-              name="lastName"
-              onChange={this.handleFieldChange}
-              value={this.state.lastName}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Email:{' '}
-            <input
-              name="email"
-              onChange={this.handleFieldChange}
-              value={this.state.email}
-              placeholder="nazwa@poczty.pl"
-            />
-          </label>
-        </div>
+        {this.formFields.map((field) => (
+          <div key={field.name}>
+            <label htmlFor={field.name}>
+              {field.label}:{' '}
+              <input
+                name={field.name}
+                onChange={this.handleFieldChange}
+                value={this.state[field.name]}
+                placeholder={field.placeholder}
+              />
+            </label>
+          </div>
+        ))}
         <div>
           <input type="submit" value="zapisz" />
         </div>
@@ -90,61 +58,26 @@ class CalendarForm extends React.Component {
   };
 
   validateForm() {
-    const errors = [];
+    const formData = {};
+    this.formFields.forEach((field) => {
+      formData[field.name] = this.state[field.name];
+    });
 
-    if (!this.isDateCorrect()) {
-      errors.push('Popraw wprowadzoną datę');
-    }
+    const errors = validateFormFields(formData);
 
-    if (!this.isTimeCorrect()) {
-      errors.push('Popraw wprowadzoną godiznę');
-    }
+    this.setState({
+      errors,
+    });
 
-    if (!this.isFirstNameCorrect()) {
-      errors.push('Wprowadź imię');
-    }
-
-    if (!this.isLastNameCorrect()) {
-      errors.push('Wprowadż nazwisko');
-    }
-
-    if (!this.isEmailCorrect()) {
-      errors.push('Wprowadź poprawny adres email');
-    }
-
-    return errors;
-  }
-
-  isDateCorrect() {
-    const pattern = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
-
-    return pattern.test(this.state.date);
-  }
-
-  isTimeCorrect() {
-    const pattern = /^[0-9]{2}:[0-9]{2}$/;
-
-    return pattern.test(this.state.time);
-  }
-
-  isFirstNameCorrect() {
-    return this.state.firstName.length > 0;
-  }
-
-  isLastNameCorrect() {
-    return this.state.lastName.length > 0;
-  }
-
-  isEmailCorrect() {
-    const pattern = /^[0-9a-zA-Z_.-]+@[0-9a-zA-Z.-]+\.[a-zA-Z]{2,3}$/;
-
-    return pattern.test(this.state.email);
+    return Object.values(errors);
   }
 
   handleFieldChange = (e) => {
-    if (this.isFieldNameCorrect(e.target.name)) {
+    const fieldName = e.target.name;
+
+    if (this.isFieldNameCorrect(fieldName)) {
       this.setState({
-        [e.target.name]: e.target.value,
+        [fieldName]: e.target.value,
       });
     }
   };
@@ -167,16 +100,16 @@ class CalendarForm extends React.Component {
   }
 
   getFieldsData() {
-    const fieldsData = Object.assign({}, this.state);
-    delete fieldsData['errors'];
+    const fieldsData = {};
+    this.formFields.forEach((field) => {
+      fieldsData[field.name] = this.state[field.name];
+    });
 
     return fieldsData;
   }
 
   isFieldNameCorrect(name) {
-    const fieldsData = this.getFieldsData();
-
-    return typeof fieldsData[name] !== 'undefined';
+    return this.formFields.some((field) => field.name === name);
   }
 
   renderErrors() {
