@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import CalendarList from './CalendarList';
 import CalendarForm from './CalendarForm';
 import { actions } from '../actions/meetingsSlice';
+import {
+  loadMeetingsFromApi,
+  sendMeetingToApi,
+} from '../providers/apiProvider';
 
 class Calendar extends React.Component {
   apiUrl = 'http://localhost:3005/meetings';
@@ -25,26 +29,7 @@ class Calendar extends React.Component {
   }
 
   sendMeetingToApi = (meetingData) => {
-    fetch(this.apiUrl, {
-      method: 'POST',
-      body: JSON.stringify(meetingData),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((resp) => {
-        if (resp.ok) {
-          return resp.json();
-        }
-
-        throw new Error('Network error!');
-      })
-      .then((meetingData) => {
-        this.addMeetingToState(meetingData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    sendMeetingToApi(meetingData, this.addMeetingToState.bind(this));
   };
 
   addMeetingToState(meetingData) {
@@ -52,7 +37,7 @@ class Calendar extends React.Component {
   }
 
   componentDidMount() {
-    this.loadMeetingsFromApi();
+    loadMeetingsFromApi(this.props.loadMeetings);
   }
 
   render() {
@@ -70,9 +55,9 @@ const mapStateToProps = (state) => ({
   meetings: state.meetings.meetings,
 });
 
-const mapDispatchToProps = {
+const mapActionToProps = {
   loadMeetings: actions.loadMeetings,
   saveMeeting: actions.saveMeeting,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Calendar);
+export default connect(mapStateToProps, mapActionToProps)(Calendar);
