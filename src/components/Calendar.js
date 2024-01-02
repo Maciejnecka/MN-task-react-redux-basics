@@ -6,6 +6,7 @@ import { actions } from '../actions/meetingsSlice';
 import {
   loadMeetingsFromApi,
   sendMeetingToApi,
+  deleteMeetingFromApi,
 } from '../providers/apiProvider';
 
 class Calendar extends React.Component {
@@ -17,6 +18,14 @@ class Calendar extends React.Component {
     this.props.saveMeeting({ meeting: meetingData });
   };
 
+  deleteMeetingFromState = (meetingId) => {
+    this.props.deleteMeeting({ id: meetingId });
+  };
+
+  deleteMeetingFromApi = (meetingId) => {
+    deleteMeetingFromApi(meetingId, this.deleteMeetingFromState);
+  };
+
   componentDidMount() {
     loadMeetingsFromApi(this.props.loadMeetings);
   }
@@ -25,7 +34,10 @@ class Calendar extends React.Component {
     const { meetings } = this.props;
     return (
       <section>
-        <CalendarList meetings={meetings} />
+        <CalendarList
+          meetings={meetings}
+          deleteMeeting={this.deleteMeetingFromApi}
+        />
         <CalendarForm saveMeeting={this.sendMeetingToApi} />
       </section>
     );
@@ -34,11 +46,13 @@ class Calendar extends React.Component {
 
 const mapStateToProps = (state) => ({
   meetings: state.meetings.meetings,
+  deleteMeeting: actions.deleteMeeting,
 });
 
 const mapActionToProps = {
   loadMeetings: actions.loadMeetings,
   saveMeeting: actions.saveMeeting,
+  deleteMeeting: actions.deleteMeeting,
 };
 
 export default connect(mapStateToProps, mapActionToProps)(Calendar);

@@ -39,4 +39,22 @@ const sendMeetingToApi = (meetingData, addMeetingToState) => {
     });
 };
 
-export { loadMeetingsFromApi, sendMeetingToApi };
+const deleteMeetingFromApi = (meetingId, deleteMeetingFromState) => {
+  fetch(`${apiUrl}/${meetingId}`, {
+    method: 'DELETE',
+  })
+    .then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      }
+      throw new Error('Network error!');
+    })
+    .then(() => {
+      deleteMeetingFromState(meetingId);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export { loadMeetingsFromApi, sendMeetingToApi, deleteMeetingFromApi };

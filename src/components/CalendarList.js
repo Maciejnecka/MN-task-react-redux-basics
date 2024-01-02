@@ -15,6 +15,11 @@ class CalendarList extends React.Component {
     return meetings.map((item) => this.renderMeetingsItem(item));
   }
 
+  handleDeleteClick = (meetingId) => {
+    const { deleteMeeting } = this.props;
+    deleteMeeting(meetingId);
+  };
+
   renderMeetingsItem(itemData) {
     return (
       <li key={itemData.id}>
@@ -22,6 +27,9 @@ class CalendarList extends React.Component {
         <a href={`mailto: ${itemData.email}`}>
           {itemData.firstName} {itemData.lastName}
         </a>
+        <button onClick={() => this.handleDeleteClick(itemData.id)}>
+          Delete
+        </button>
       </li>
     );
   }

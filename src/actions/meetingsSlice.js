@@ -11,6 +11,10 @@ export const meetingsSlice = createSlice({
       const { meeting } = action.payload;
       state.meetings = [...state.meetings, meeting];
     },
+    deleteMeeting(state, action) {
+      const { id } = action.payload;
+      state.meetings = state.meetings.filter((meeting) => meeting.id !== id);
+    },
   },
 });
 
