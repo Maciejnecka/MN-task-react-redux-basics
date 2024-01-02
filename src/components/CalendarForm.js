@@ -8,32 +8,47 @@ class CalendarForm extends React.Component {
     email: '',
     date: '',
     time: '',
-    errors: [],
+    errors: {},
   };
 
   formFields = [
-    { name: 'date', label: 'Data', placeholder: 'RRRR-MM-DD' },
-    { name: 'time', label: 'Godzina', placeholder: 'HH:MM' },
+    { name: 'date', type: 'date', label: 'Data', placeholder: 'RRRR-MM-DD' },
+    {
+      name: 'time',
+      type: 'time',
+      label: 'Godzina',
+      placeholder: 'HH:MM',
+    },
     { name: 'firstName', label: 'Imię' },
     { name: 'lastName', label: 'Nazwisko' },
-    { name: 'email', label: 'Email', placeholder: 'nazwa@poczty.pl' },
+    {
+      name: 'email',
+      type: 'email',
+      label: 'Email',
+      placeholder: 'nazwa@poczty.pl',
+    },
   ];
 
   render() {
     return (
       <form action="" onSubmit={this.handleSubmit}>
-        <ul>{this.renderErrors()}</ul>
         {this.formFields.map((field) => (
           <div key={field.name}>
             <label htmlFor={field.name}>
               {field.label}:{' '}
               <input
                 name={field.name}
+                type={field.type || 'text'}
                 onChange={this.handleFieldChange}
                 value={this.state[field.name]}
                 placeholder={field.placeholder}
               />
             </label>
+            {this.state.errors[field.name] && (
+              <div style={{ color: 'red' }}>
+                {this.state.errors[field.name]}
+              </div>
+            )}
           </div>
         ))}
         <div>
@@ -51,7 +66,7 @@ class CalendarForm extends React.Component {
       errors,
     });
 
-    if (errors.length === 0) {
+    if (Object.keys(errors).length === 0) {
       this.saveMeeting();
       this.clearFormFields();
     }
@@ -63,21 +78,23 @@ class CalendarForm extends React.Component {
       formData[field.name] = this.state[field.name];
     });
 
-    const errors = validateFormFields(formData);
-
-    this.setState({
-      errors,
-    });
-
-    return Object.values(errors);
+    return validateFormFields(formData);
   }
 
   handleFieldChange = (e) => {
     const fieldName = e.target.name;
 
     if (this.isFieldNameCorrect(fieldName)) {
+      const value = e.target.value;
+      const errors = { ...this.state.errors };
+
+      const fieldErrors = validateFormFields({ [fieldName]: value });
+
+      errors[fieldName] = fieldErrors[fieldName] || null;
+
       this.setState({
-        [fieldName]: e.target.value,
+        [fieldName]: value,
+        errors,
       });
     }
   };
@@ -96,7 +113,10 @@ class CalendarForm extends React.Component {
       fieldsData[prop] = '';
     }
 
-    this.setState(fieldsData);
+    this.setState({
+      ...fieldsData,
+      errors: {},
+    });
   }
 
   getFieldsData() {
@@ -113,7 +133,9 @@ class CalendarForm extends React.Component {
   }
 
   renderErrors() {
-    return this.state.errors.map((err, index) => <li key={index}>{err}</li>);
+    return Object.values(this.state.errors).map(
+      (err, index) => err && <li key={index}>{err}</li>
+    );
   }
 }
 
