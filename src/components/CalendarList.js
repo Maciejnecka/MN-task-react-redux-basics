@@ -6,13 +6,19 @@ class CalendarList extends React.Component {
   }
 
   renderMeetingsList() {
-    return this.props.meetings.map((item) => this.renderMeetingsItem(item));
+    const { meetings } = this.props;
+
+    if (!meetings || !meetings.length) {
+      return <p>No meetings available</p>;
+    }
+
+    return meetings.map((item) => this.renderMeetingsItem(item));
   }
 
   renderMeetingsItem(itemData) {
     return (
       <li key={itemData.id}>
-        {itemData.date} {itemData.time} =>
+        {itemData.date} {itemData.time} =&gt;
         <a href={`mailto: ${itemData.email}`}>
           {itemData.firstName} {itemData.lastName}
         </a>

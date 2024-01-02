@@ -78,7 +78,7 @@ const mapActionToProps = {
 };
 
 const mapStateToProps = (state, props) => ({
-  meetings: state.meetings,
+  meetings: state.meetings.meetings,
 });
 
 export default connect(mapStateToProps, mapActionToProps)(Calendar);

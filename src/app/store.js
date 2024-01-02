@@ -1,8 +1,7 @@
 // src/app/store.js
 import { configureStore } from '@reduxjs/toolkit';
-
-import { meetingsSlice } from '../meetings/meetingsSlice';
+import rootReducer from '../reducers/index';
 
 export const store = configureStore({
-  reducer: meetingsSlice.reducer,
+  reducer: rootReducer,
 });
