@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledCalendarForm = styled.form`
-  .calendar__form {
-  }
+  border: 1px solid #f33f;
+
   .calendar__form-field {
   }
   .calendar__form-label {

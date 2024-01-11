@@ -1,8 +1,13 @@
 import React from 'react';
+import { StyledCalendarList, StyledButtonDelete } from './CalendarList.styled';
 
 class CalendarList extends React.Component {
   render() {
-    return <ul className="calendar__list">{this.renderMeetingsList()}</ul>;
+    return (
+      <StyledCalendarList className="calendar__list">
+        {this.renderMeetingsList()}
+      </StyledCalendarList>
+    );
   }
 
   renderMeetingsList() {
@@ -24,12 +29,15 @@ class CalendarList extends React.Component {
     return (
       <li className="calendar__item" key={itemData.id}>
         {itemData.date} {itemData.time} =&gt;
-        <a href={`mailto: ${itemData.email}`}>
+        <a className="calendar__email-link" href={`mailto: ${itemData.email}`}>
           {itemData.firstName} {itemData.lastName}
         </a>
-        <button onClick={() => this.handleDeleteClick(itemData.id)}>
+        <StyledButtonDelete
+          className="calendar__button-delete"
+          onClick={() => this.handleDeleteClick(itemData.id)}
+        >
           Delete
-        </button>
+        </StyledButtonDelete>
       </li>
     );
   }

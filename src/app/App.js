@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Calendar from '../components/Calendar/index.js';
+import Calendar from '../components/Calendar';
 
 class App extends React.Component {
   render() {
