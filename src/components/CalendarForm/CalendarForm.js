@@ -1,5 +1,6 @@
 import React from 'react';
-import validateFormFields from './utilities/formValidator';
+import validateFormFields from '../utilities/formValidator';
+import { StyledCalendarForm } from './CalendarForm.styled';
 
 class CalendarForm extends React.Component {
   state = {
@@ -31,10 +32,14 @@ class CalendarForm extends React.Component {
 
   render() {
     return (
-      <form action="" onSubmit={this.handleSubmit}>
+      <StyledCalendarForm
+        className="calendar__form"
+        action=""
+        onSubmit={this.handleSubmit}
+      >
         {this.formFields.map((field) => (
-          <div key={field.name}>
-            <label htmlFor={field.name}>
+          <div key={field.name} className="calendar__form-field">
+            <label htmlFor={field.name} className="calendar__form-label">
               {field.label}:{' '}
               <input
                 name={field.name}
@@ -42,19 +47,24 @@ class CalendarForm extends React.Component {
                 onChange={this.handleFieldChange}
                 value={this.state[field.name]}
                 placeholder={field.placeholder}
+                className="calendar__form-input"
               />
             </label>
             {this.state.errors[field.name] && (
-              <div style={{ color: 'red' }}>
+              <div className="calendar__form-error">
                 {this.state.errors[field.name]}
               </div>
             )}
           </div>
         ))}
-        <div>
-          <input type="submit" value="zapisz" />
+        <div className="calendar__form-actions">
+          <input
+            type="submit"
+            value="zapisz"
+            className="calendar__form-submit"
+          />
         </div>
-      </form>
+      </StyledCalendarForm>
     );
   }
 

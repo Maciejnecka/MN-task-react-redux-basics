@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CalendarList from './CalendarList';
-import CalendarForm from './CalendarForm';
-import { actions } from '../actions/meetingsSlice';
+import CalendarList from '../CalendarList/CalendarList';
+import CalendarForm from '../CalendarForm/CalendarForm';
+import { actions } from '../../actions/meetingsSlice';
 import {
   loadMeetingsFromApi,
   sendMeetingToApi,
   deleteMeetingFromApi,
-} from '../providers/apiProvider';
+} from '../../providers/apiProvider';
 
 class Calendar extends React.Component {
   sendMeetingToApi = (meetingData) => {
@@ -33,7 +33,7 @@ class Calendar extends React.Component {
   render() {
     const { meetings } = this.props;
     return (
-      <section>
+      <section className="calendar">
         <CalendarList
           meetings={meetings}
           deleteMeeting={this.deleteMeetingFromApi}

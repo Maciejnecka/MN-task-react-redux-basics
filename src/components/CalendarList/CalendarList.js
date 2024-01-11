@@ -2,7 +2,7 @@ import React from 'react';
 
 class CalendarList extends React.Component {
   render() {
-    return <ul>{this.renderMeetingsList()}</ul>;
+    return <ul className="calendar__list">{this.renderMeetingsList()}</ul>;
   }
 
   renderMeetingsList() {
@@ -22,7 +22,7 @@ class CalendarList extends React.Component {
 
   renderMeetingsItem(itemData) {
     return (
-      <li key={itemData.id}>
+      <li className="calendar__item" key={itemData.id}>
         {itemData.date} {itemData.time} =&gt;
         <a href={`mailto: ${itemData.email}`}>
           {itemData.firstName} {itemData.lastName}
