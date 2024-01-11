@@ -9,11 +9,23 @@ import {
   deleteMeetingFromApi,
 } from '../../providers/apiProvider';
 
-import { StyledCalendar } from './Calendar.styled';
+import { StyledCalendar, StyledLoading } from './Calendar.styled';
 
 class Calendar extends React.Component {
+  state = {
+    isLoading: false,
+  };
+
   sendMeetingToApi = (meetingData) => {
-    sendMeetingToApi(meetingData, this.addMeetingToState);
+    this.setState({ isLoading: true });
+    setTimeout(() => {
+      sendMeetingToApi(meetingData, (meetingData) => {
+        this.props.saveMeeting({ meeting: meetingData });
+        setTimeout(() => {
+          this.setState({ isLoading: false });
+        }, 500);
+      });
+    }, 500);
   };
 
   addMeetingToState = (meetingData) => {
@@ -34,13 +46,18 @@ class Calendar extends React.Component {
 
   render() {
     const { meetings } = this.props;
+    const { isLoading } = this.state;
     return (
       <StyledCalendar className="calendar">
         <CalendarForm saveMeeting={this.sendMeetingToApi} />
-        <CalendarList
-          meetings={meetings}
-          deleteMeeting={this.deleteMeetingFromApi}
-        />
+        {isLoading ? (
+          <StyledLoading className="calendar__loading" />
+        ) : (
+          <CalendarList
+            meetings={meetings}
+            deleteMeeting={this.deleteMeetingFromApi}
+          />
+        )}
       </StyledCalendar>
     );
   }
