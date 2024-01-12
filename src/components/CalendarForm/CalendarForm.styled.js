@@ -19,15 +19,6 @@ export const StyledCalendarForm = styled.form`
     font-weight: bold;
   }
 
-  .calendar__form-input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #f8f8f8;
-  }
-
   .calendar__form-error {
     color: #760000;
     font-weight: bold;

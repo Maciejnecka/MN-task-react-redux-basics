@@ -1,6 +1,7 @@
 import React from 'react';
 import validateFormFields from '../utilities/formValidator';
 import { StyledCalendarForm } from './CalendarForm.styled';
+import StyledCustomInput from '../CustomInput';
 
 class CalendarForm extends React.Component {
   state = {
@@ -20,8 +21,8 @@ class CalendarForm extends React.Component {
       label: 'Godzina',
       placeholder: 'HH:MM',
     },
-    { name: 'firstName', label: 'Imię' },
-    { name: 'lastName', label: 'Nazwisko' },
+    { name: 'firstName', label: 'Imię', placeholder: 'Imię' },
+    { name: 'lastName', label: 'Nazwisko', placeholder: 'Nazwisko' },
     {
       name: 'email',
       type: 'email',
@@ -41,7 +42,7 @@ class CalendarForm extends React.Component {
           <div key={field.name} className="calendar__form-field">
             <label htmlFor={field.name} className="calendar__form-label">
               {field.label}:{' '}
-              <input
+              <StyledCustomInput
                 name={field.name}
                 type={field.type || 'text'}
                 onChange={this.handleFieldChange}
