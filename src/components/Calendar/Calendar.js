@@ -11,12 +11,15 @@ import {
 
 import { StyledCalendar, StyledLoading } from './Calendar.styled';
 import StyledCalendarLogin from '../CalendarLogin/CalendarLogin';
+import { CustomButtonLog } from '../CustomButtons';
 
 class Calendar extends React.Component {
   state = {
     isLoading: false,
     // Temp false for true
     isLoggedIn: true,
+    isLoggingIn: false,
+    isLoggingOut: false,
   };
 
   sendMeetingToApi = (meetingData) => {
@@ -48,20 +51,27 @@ class Calendar extends React.Component {
   }
 
   handleLogin = (loginSuccess) => {
-    this.setState({ isLoggedIn: loginSuccess });
+    this.setState({ isLoggingIn: true });
+    setTimeout(() => {
+      this.setState({ isLoggedIn: loginSuccess, isLoggingIn: false });
+    }, 500);
   };
 
   handleLogout = () => {
-    this.setState({ isLoggedIn: false });
+    this.setState({ isLoggingOut: true });
+    setTimeout(() => {
+      this.setState({ isLoggedIn: false, isLoggingOut: false });
+    }, 500);
   };
-
   render() {
     const { meetings } = this.props;
-    const { isLoading, isLoggedIn } = this.state;
+    const { isLoading, isLoggedIn, isLoggingIn, isLoggingOut } = this.state;
 
     return (
       <StyledCalendar className="calendar">
-        {!isLoggedIn ? (
+        {isLoggingIn || isLoggingOut ? (
+          <StyledLoading className="calendar__loading" />
+        ) : !isLoggedIn ? (
           <StyledCalendarLogin onLoginSuccess={this.handleLogin} />
         ) : (
           <>
@@ -79,10 +89,12 @@ class Calendar extends React.Component {
             {isLoading && (
               <StyledLoading className="calendar__loading-between" />
             )}
-
-            <button className="calendar__logout" onClick={this.handleLogout}>
-              Logout
-            </button>
+            <CustomButtonLog
+              text="Wyloguj"
+              className="calendar__logout"
+              onClick={this.handleLogout}
+              marginSize="large"
+            />
           </>
         )}
       </StyledCalendar>

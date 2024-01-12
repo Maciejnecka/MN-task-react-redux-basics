@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyledCalendarList, StyledButtonDelete } from './CalendarList.styled';
-import CustomButtonDelete from '../CustomButtons';
+import { StyledCalendarList } from './CalendarList.styled';
+import { CustomButtonDelete } from '../CustomButtons';
 
 class CalendarList extends React.Component {
   state = {

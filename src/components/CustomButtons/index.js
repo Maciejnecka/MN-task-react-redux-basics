@@ -1,3 +1,4 @@
 import CustomButtonDelete from './CustomButtonDelete';
+import CustomButtonLog from './CustomButtonLog';
 
-export default CustomButtonDelete;
+export { CustomButtonDelete, CustomButtonLog };

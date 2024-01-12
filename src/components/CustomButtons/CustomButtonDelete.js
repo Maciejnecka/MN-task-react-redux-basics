@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyledButtonDelete } from './CustomButtonDelete.styled';
 
 class CustomButtonDelete extends React.Component {
@@ -13,5 +14,10 @@ class CustomButtonDelete extends React.Component {
     );
   }
 }
+
+CustomButtonDelete.propTypes = {
+  onClick: PropTypes.func,
+  children: PropTypes.node,
+};
 
 export default CustomButtonDelete;

@@ -1,6 +1,7 @@
 import React from 'react';
 import StyledCustomInput from '../CustomInput/CustomInput.styled';
 import { StyledCalendarLogin } from './CalendarLogin.styled';
+import { CustomButtonLog } from '../CustomButtons';
 
 class CalendarLogin extends React.Component {
   state = {
@@ -50,10 +51,11 @@ class CalendarLogin extends React.Component {
           <div className="calendar__login-error">{errors.form}</div>
         )}
         <div className="calendar__login-actions">
-          <input
-            type="submit"
-            value="Zaloguj się"
+          <CustomButtonLog
+            text="Zaloguj się"
+            onClick={this.handleSubmit}
             className="calendar__login-submit"
+            marginSize="medium"
           />
         </div>
       </StyledCalendarLogin>
