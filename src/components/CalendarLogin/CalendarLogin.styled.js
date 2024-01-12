@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledCalendarLogin = styled.div`
+export const StyledCalendarLogin = styled.form`
   background-color: #f3f3f3;
   margin: 5rem;
   display: flex;

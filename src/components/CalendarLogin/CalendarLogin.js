@@ -28,7 +28,7 @@ class CalendarLogin extends React.Component {
     return (
       <StyledCalendarLogin
         className="calendar__login"
-        onClick={this.handleSubmit}
+        onSubmit={this.handleSubmit}
       >
         {this.formFields.map((field) => (
           <div key={field.name} className="calendar__login-field">
@@ -82,10 +82,11 @@ class CalendarLogin extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
     const errors = this.validateForm();
     this.setState({ errors });
+
     if (Object.keys(errors).length === 0) {
+      this.props.onLoginSuccess(true);
       this.clearFormFields();
     } else {
       console.log('Errors', errors);

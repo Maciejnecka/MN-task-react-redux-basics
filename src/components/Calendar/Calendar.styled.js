@@ -15,6 +15,34 @@ export const StyledCalendar = styled.section`
   box-shadow: inset 6px 6px 10px #a0b1c3, inset -6px -6px 10px #d0e4ff;
   background-size: 400% 400%;
   animation: ${gradientBackground} 15s ease infinite;
+
+  .calendar__logout {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 15px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+    background: #8ba6d1;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 8px 8px 15px #7a8baa, -8px -8px 15px #9cb2da,
+      inset 5px 5px 10px #7a8baa, inset -5px -5px 10px #9cb2da;
+  }
+
+  .calendar__logout:hover,
+  .calendar__logout:focus {
+    background: #9cb2da;
+    box-shadow: 3px 3px 7px #7a8baa, -3px -3px 7px #9cb2da,
+      inset 1px 1px 3px #7a8baa, inset -1px -1px 3px #9cb2da;
+  }
+
+  .calendar__logout:active {
+    background: #7a8baa;
+    box-shadow: inset 3px 3px 7px #7a8baa, inset -3px -3px 7px #9cb2da;
+  }
 `;
 
 export const StyledLoading = styled.div`

@@ -15,6 +15,8 @@ import StyledCalendarLogin from '../CalendarLogin/CalendarLogin';
 class Calendar extends React.Component {
   state = {
     isLoading: false,
+    // Temp false for true
+    isLoggedIn: true,
   };
 
   sendMeetingToApi = (meetingData) => {
@@ -45,20 +47,43 @@ class Calendar extends React.Component {
     loadMeetingsFromApi(this.props.loadMeetings);
   }
 
+  handleLogin = (loginSuccess) => {
+    this.setState({ isLoggedIn: loginSuccess });
+  };
+
+  handleLogout = () => {
+    this.setState({ isLoggedIn: false });
+  };
+
   render() {
     const { meetings } = this.props;
-    const { isLoading } = this.state;
+    const { isLoading, isLoggedIn } = this.state;
+
     return (
       <StyledCalendar className="calendar">
-        <CalendarForm saveMeeting={this.sendMeetingToApi} />
-        <StyledCalendarLogin />
-        {isLoading ? (
-          <StyledLoading className="calendar__loading" />
+        {!isLoggedIn ? (
+          <StyledCalendarLogin onLoginSuccess={this.handleLogin} />
         ) : (
-          <CalendarList
-            meetings={meetings}
-            deleteMeeting={this.deleteMeetingFromApi}
-          />
+          <>
+            <CalendarForm saveMeeting={this.sendMeetingToApi} />
+
+            {isLoading ? (
+              <StyledLoading className="calendar__loading" />
+            ) : (
+              <CalendarList
+                meetings={meetings}
+                deleteMeeting={this.deleteMeetingFromApi}
+              />
+            )}
+
+            {isLoading && (
+              <StyledLoading className="calendar__loading-between" />
+            )}
+
+            <button className="calendar__logout" onClick={this.handleLogout}>
+              Logout
+            </button>
+          </>
         )}
       </StyledCalendar>
     );
