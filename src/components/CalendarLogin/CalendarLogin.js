@@ -32,7 +32,10 @@ class CalendarLogin extends React.Component {
       >
         {this.formFields.map((field) => (
           <div key={field.name} className="calendar__login-field">
-            <label htmlFor={field.name}> {field.label}: </label>
+            <label htmlFor={field.name}>
+              {' '}
+              <span className="calendar__login-label">{field.label}:</span>{' '}
+            </label>
             <StyledCustomInput
               name={field.name}
               type={field.type || 'text'}
@@ -43,7 +46,9 @@ class CalendarLogin extends React.Component {
             />
           </div>
         ))}
-        {errors.form && <div className="error">{errors.form}</div>}
+        {errors.form && (
+          <div className="calendar__login-error">{errors.form}</div>
+        )}
         <div className="calendar__login-actions">
           <input
             type="submit"
