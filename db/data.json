@@ -1,68 +1,20 @@
 {
   "meetings": [
     {
-      "date": "2024-01-19",
-      "time": "22:22",
+      "date": "2024-01-12",
+      "time": "15:20",
       "firstName": "Maciej",
       "lastName": "Nęcka",
       "email": "macieknecka@gmail.com",
-      "id": 12
-    },
-    {
-      "date": "2024-01-20",
-      "time": "15:42",
-      "firstName": "Maciej",
-      "lastName": "Nęcka",
-      "email": "macieknecka@gmail.com",
-      "id": 13
-    },
-    {
-      "date": "2024-01-11",
-      "time": "12:52",
-      "firstName": "Maciej",
-      "lastName": "Nęcka",
-      "email": "macieknecka@gmail.com",
-      "id": 14
-    },
-    {
-      "date": "2024-01-17",
-      "time": "14:34",
-      "firstName": "Maciej",
-      "lastName": "Nęcka",
-      "email": "macieknecka@gmail.com",
-      "id": 15
-    },
-    {
-      "date": "2024-01-13",
-      "time": "14:46",
-      "firstName": "Maciej",
-      "lastName": "Nęcka",
-      "email": "macieknecka@gmail.com",
-      "id": 16
-    },
-    {
-      "date": "2024-01-04",
-      "time": "14:47",
-      "firstName": "Maciej",
-      "lastName": "Nęcka",
-      "email": "macieknecka@gmail.com",
-      "id": 17
-    },
-    {
-      "date": "2024-01-13",
-      "time": "13:59",
-      "firstName": "Maciej",
-      "lastName": "Nęcka",
-      "email": "macieknecka@gmail.com",
-      "id": 18
-    },
-    {
-      "date": "2024-01-27",
-      "time": "12:13",
-      "firstName": "Kasia",
-      "lastName": "Kasia",
-      "email": "scorpsnake001@gmail.com",
       "id": 19
+    },
+    {
+      "date": "2024-01-26",
+      "time": "15:21",
+      "firstName": "Maciej",
+      "lastName": "Nęcka",
+      "email": "macieknecka@gmail.com",
+      "id": 21
     }
   ]
 }
