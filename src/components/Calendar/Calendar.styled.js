@@ -1,5 +1,5 @@
-import styled, { keyframes } from 'styled-components';
-import { gradientBackground } from '../../styles/animations';
+import styled from 'styled-components';
+import { gradientBackground, loadingAnimation } from '../../styles/animations';
 
 export const StyledCalendar = styled.section`
   display: flex;
@@ -17,15 +17,6 @@ export const StyledCalendar = styled.section`
   animation: ${gradientBackground} 15s ease infinite;
 `;
 
-const rotatingAnimation = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-`;
-
 export const StyledLoading = styled.div`
   display: inline-block;
   width: 80px;
@@ -40,6 +31,6 @@ export const StyledLoading = styled.div`
     border-radius: 50%;
     border: 6px solid #333;
     border-color: #333 transparent #333 transparent;
-    animation: ${rotatingAnimation} 1.2s linear infinite;
+    animation: ${loadingAnimation} 1.2s linear infinite;
   }
 `;
