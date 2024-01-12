@@ -78,7 +78,7 @@ class CalendarList extends React.Component {
             key={`confirmation-${itemData.id}`}
           >
             <p className="delete-paragraph">
-              Are you sure you want to delete this from the calendar?
+              Are you sure you want to remove this item from the calendar?
             </p>
             <button
               className="delete-confirmation__confirm"

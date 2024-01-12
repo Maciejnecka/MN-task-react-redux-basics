@@ -65,13 +65,14 @@ export const StyledCalendarList = styled.ul`
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 6px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #e76f51;
     z-index: 10;
   }
 
   .delete-paragraph {
     font-size: 16px;
-    color: #333;
+    color: #e76f51;
+    font-weight: bold;
     margin-bottom: 10px;
   }
 

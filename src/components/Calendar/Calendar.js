@@ -10,6 +10,7 @@ import {
 } from '../../providers/apiProvider';
 
 import { StyledCalendar, StyledLoading } from './Calendar.styled';
+import StyledCalendarLogin from '../CalendarLogin/CalendarLogin';
 
 class Calendar extends React.Component {
   state = {
@@ -50,6 +51,7 @@ class Calendar extends React.Component {
     return (
       <StyledCalendar className="calendar">
         <CalendarForm saveMeeting={this.sendMeetingToApi} />
+        <StyledCalendarLogin />
         {isLoading ? (
           <StyledLoading className="calendar__loading" />
         ) : (
