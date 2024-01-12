@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { buttonAnimation } from '../../styles/animations';
 
 export const StyledCalendarForm = styled.form`
   display: flex;
@@ -8,6 +7,7 @@ export const StyledCalendarForm = styled.form`
   width: 100%;
   border-radius: 6px;
   margin-bottom: 2rem;
+  color: #011622;
 
   .calendar__form-field {
     width: 80%;
@@ -25,10 +25,12 @@ export const StyledCalendarForm = styled.form`
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
+    background-color: #f8f8f8;
   }
 
   .calendar__form-error {
-    color: #f33f;
+    color: #760000;
+    font-weight: bold;
     text-align: center;
     margin-top: 5px;
   }
@@ -44,14 +46,23 @@ export const StyledCalendarForm = styled.form`
     outline: none;
     border: none;
     border-radius: 10px;
-    transition: 0.5s;
-    background: #628395;
+    transition: 0.3s;
+    background: #8ba6d1;
+    color: #fff;
     cursor: pointer;
-    color: #011622;
-    box-shadow: 0 0 10px #628395, inset 0 0 10px #628395;
+    box-shadow: 8px 8px 15px #7a8baa, -8px -8px 15px #9cb2da,
+      inset 5px 5px 10px #7a8baa, inset -5px -5px 10px #9cb2da;
   }
 
-  .calendar__form-submit:hover {
-    animation: ${buttonAnimation} 0.5s 1 linear;
+  .calendar__form-submit:hover,
+  .calendar__form-submit:focus {
+    background: #9cb2da;
+    box-shadow: 5px 5px 10px #7a8baa, -5px -5px 10px #9cb2da,
+      inset 2px 2px 5px #7a8baa, inset -2px -2px 5px #9cb2da;
+  }
+
+  .calendar__form-submit:active {
+    background: #7a8baa;
+    box-shadow: inset 5px 5px 10px #7a8baa, inset -5px -5px 10px #9cb2da;
   }
 `;

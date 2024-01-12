@@ -60,7 +60,7 @@ class CalendarForm extends React.Component {
         <div className="calendar__form-actions">
           <input
             type="submit"
-            value="zapisz"
+            value="Zapisz"
             className="calendar__form-submit"
           />
         </div>

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { loadingAnimation } from '../../styles/animations';
+import styled, { keyframes } from 'styled-components';
+import { gradientBackground } from '../../styles/animations';
 
 export const StyledCalendar = styled.section`
   display: flex;
@@ -11,8 +11,19 @@ export const StyledCalendar = styled.section`
   font-size: 16px;
   width: 50vw;
   border-radius: 6px;
-  background: #fff;
-  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+  background: linear-gradient(45deg, #bbd3f0, #95d4e1);
+  box-shadow: inset 6px 6px 10px #a0b1c3, inset -6px -6px 10px #d0e4ff;
+  background-size: 400% 400%;
+  animation: ${gradientBackground} 15s ease infinite;
+`;
+
+const rotatingAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 `;
 
 export const StyledLoading = styled.div`
@@ -23,13 +34,12 @@ export const StyledLoading = styled.div`
   &:after {
     content: ' ';
     display: block;
-    margin: auto;
     width: 64px;
     height: 64px;
     margin: 8px;
     border-radius: 50%;
     border: 6px solid #333;
     border-color: #333 transparent #333 transparent;
-    animation: ${loadingAnimation} 1.2s linear infinite;
+    animation: ${rotatingAnimation} 1.2s linear infinite;
   }
 `;

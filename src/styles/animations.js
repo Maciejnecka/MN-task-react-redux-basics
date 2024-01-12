@@ -9,24 +9,14 @@ export const loadingAnimation = keyframes`
     }
 `;
 
-export const buttonAnimation = keyframes`
+export const gradientBackground = keyframes`
   0% {
-    transform: scale(0.7, 1.3);
+    background-position: 0% 50%;
   }
-
-  25% {
-    transform: scale(1.3, 0.7);
-  }
-
   50% {
-    transform: scale(0.7, 1.3);
+    background-position: 100% 50%;
   }
-
-  75% {
-    transform: scale(1.3, 0.7);
-  }
-
   100% {
-    transform: scale(1, 1);
+    background-position: 0% 50%;
   }
 `;

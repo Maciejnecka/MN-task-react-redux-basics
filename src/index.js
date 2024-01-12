@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import App from './app/App';
 import { store } from './app/store';
 import { Reset } from 'styled-reset';
-import GlobalFonts from './styles/fonts';
+import GlobalFonts from './styles/fonts/GlobalFonts';
 import GlobalStyles from './styles/Global';
 
 const root = createRoot(document.querySelector('#root'));
