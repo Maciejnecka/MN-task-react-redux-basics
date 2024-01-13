@@ -17,7 +17,7 @@ class Calendar extends React.Component {
   state = {
     isLoading: false,
     // Temp false for true
-    isLoggedIn: true,
+    isLoggedIn: false,
     isLoggingIn: false,
     isLoggingOut: false,
   };
@@ -69,14 +69,16 @@ class Calendar extends React.Component {
 
     return (
       <StyledCalendar className="calendar">
+        <h1 className="calendar__heading">React Redux Calendar</h1>
+        <CalendarForm saveMeeting={this.sendMeetingToApi} />
         {isLoggingIn || isLoggingOut ? (
           <StyledLoading className="calendar__loading" />
         ) : !isLoggedIn ? (
-          <StyledCalendarLogin onLoginSuccess={this.handleLogin} />
+          <>
+            <StyledCalendarLogin onLoginSuccess={this.handleLogin} />
+          </>
         ) : (
           <>
-            <CalendarForm saveMeeting={this.sendMeetingToApi} />
-
             {isLoading ? (
               <StyledLoading className="calendar__loading" />
             ) : (

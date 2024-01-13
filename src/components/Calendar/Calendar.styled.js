@@ -16,6 +16,19 @@ export const StyledCalendar = styled.section`
   box-shadow: inset 6px 6px 10px #a0b1c3, inset -6px -6px 10px #d0e4ff;
   background-size: 400% 400%;
   animation: ${gradientBackground} 15s ease infinite;
+
+  .calendar__heading {
+    font-size: 26px;
+    color: #333;
+    font-weight: bold;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 6px;
+    border-radius: 4px;
+    background-color: #9cb2da;
+    box-shadow: 1px 1px 3px #a0b1c3;
+  }
 `;
 
 export const StyledLoading = styled.div`
@@ -30,8 +43,8 @@ export const StyledLoading = styled.div`
     height: 64px;
     margin: 8px;
     border-radius: 50%;
-    border: 6px solid #333;
-    border-color: #333 transparent #333 transparent;
+    border: 6px solid #7a8baa;
+    border-color: #7a8baa transparent #7a8baa transparent;
     animation: ${loadingAnimation} 1.2s linear infinite;
   }
 `;

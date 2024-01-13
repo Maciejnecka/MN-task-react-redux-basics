@@ -10,8 +10,11 @@ class CalendarLogin extends React.Component {
     errors: {},
   };
 
-  validLogins = ['admin'];
-  validPasswords = ['admin'];
+  validUserData = [
+    { login: 'admin', password: 'admin' },
+    { login: 'admin1', password: 'admin1' },
+    { login: 'test', password: 'asdasdasd' },
+  ];
 
   formFields = [
     { name: 'login', label: 'Login', placeholder: 'Login', required: true },
@@ -31,6 +34,12 @@ class CalendarLogin extends React.Component {
         className="calendar__login"
         onSubmit={this.handleSubmit}
       >
+        <div className="calendar__login-message">Log in to display list</div>
+        <p>
+          Login: admin
+          <br />
+          Hasło: admin
+        </p>
         {this.formFields.map((field) => (
           <div key={field.name} className="calendar__login-field">
             <label htmlFor={field.name}>
@@ -65,10 +74,12 @@ class CalendarLogin extends React.Component {
   validateForm() {
     let errors = {};
 
-    const isLoginValid = this.validLogins.includes(this.state.login);
-    const isPasswordValid = this.validPasswords.includes(this.state.password);
+    const isValidUser = this.validUserData.some(
+      (user) =>
+        user.login === this.state.login && user.password === this.state.password
+    );
 
-    if (!isLoginValid || !isPasswordValid) {
+    if (!isValidUser) {
       errors.form = 'Login or password is incorrect';
     }
 

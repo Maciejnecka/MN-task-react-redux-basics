@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { pulseMessage } from '../../styles/animations';
 
 export const StyledCalendarLogin = styled.form`
   background-color: #f3f3f3;
-  margin: 5rem;
+  margin: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +11,18 @@ export const StyledCalendarLogin = styled.form`
   box-shadow: 8px 8px 15px #7a8baa, -8px -8px 15px #9cb2da,
     inset 5px 5px 10px #7a8baa, inset -5px -5px 10px #9cb2da;
   padding: 20px;
+
+  .calendar__login-message {
+    font-size: 16px;
+    color: #760000;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    padding: 6px;
+    border-radius: 4px;
+    background-color: #9cb2da;
+    box-shadow: 1px 1px 3px #a0b1c3;
+    animation: ${pulseMessage} 2s infinite;
+  }
 
   .calendar__login-field {
     margin-bottom: 15px;
