@@ -7,18 +7,18 @@ export const StyledCalendarLogin = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 6px;
-  box-shadow: 8px 8px 15px #7a8baa, -8px -8px 15px #9cb2da,
-    inset 5px 5px 10px #7a8baa, inset -5px -5px 10px #9cb2da;
+  border-radius: var(--border-radius);
+  box-shadow: 8px 8px 15px var(--main-border-color), -8px -8px 15px #9cb2da,
+    inset 5px 5px 10px var(--main-border-color), inset -5px -5px 10px #9cb2da;
   padding: 20px;
 
   .calendar__login-message {
     font-size: 16px;
-    color: #760000;
+    color: var(--red-font-color);
     font-weight: bold;
     margin-bottom: 1rem;
     padding: 6px;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     background-color: #9cb2da;
     box-shadow: 1px 1px 3px #a0b1c3;
     animation: ${pulseMessage} 2s infinite;
@@ -29,7 +29,7 @@ export const StyledCalendarLogin = styled.form`
   .calendar__login-field {
     margin-bottom: 15px;
     padding: 10px 20px;
-    border-radius: 6px;
+    border-radius: var(--border-radius);
     border: 2px solid #8ba6d1;
     outline: none;
   }
@@ -44,7 +44,7 @@ export const StyledCalendarLogin = styled.form`
   }
 
   .calendar__login-error {
-    color: #760000;
+    color: var(--red-font-color);
     font-weight: bold;
     text-align: center;
     margin-top: 5px;

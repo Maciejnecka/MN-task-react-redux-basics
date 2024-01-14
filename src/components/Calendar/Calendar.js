@@ -16,8 +16,7 @@ import { CustomButtonLog } from '../CustomButtons';
 class Calendar extends React.Component {
   state = {
     isLoading: false,
-    // Temp false for true
-    isLoggedIn: true,
+    isLoggedIn: false,
     isLoggingIn: false,
     isLoggingOut: false,
   };

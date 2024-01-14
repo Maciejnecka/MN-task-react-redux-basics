@@ -6,10 +6,10 @@ export const StyledButtonDelete = styled.button`
   font-weight: bold;
   outline: none;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   transition: 0.3s;
-  background: #e76f51;
-  color: #fff;
+  background: var(--red-font-delete-color);
+  color: var(--main-font-color);
   cursor: pointer;
   box-shadow: 8px 8px 15px #d85f4c, -8px -8px 15px #f0805f,
     inset 5px 5px 10px #d85f4c, inset -5px -5px 10px #f0805f;

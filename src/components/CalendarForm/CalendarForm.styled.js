@@ -5,7 +5,7 @@ export const StyledCalendarForm = styled.form`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   margin-bottom: 2rem;
   color: #011622;
 
@@ -20,7 +20,7 @@ export const StyledCalendarForm = styled.form`
   }
 
   .calendar__form-error {
-    color: #760000;
+    color: var(--red-font-color);
     font-weight: bold;
     text-align: center;
     margin-top: 5px;
@@ -36,24 +36,25 @@ export const StyledCalendarForm = styled.form`
     font-weight: bold;
     outline: none;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     transition: 0.3s;
     background: #8ba6d1;
-    color: #fff;
+    color: var(--main-font-color);
     cursor: pointer;
-    box-shadow: 8px 8px 15px #7a8baa, -8px -8px 15px #9cb2da,
-      inset 5px 5px 10px #7a8baa, inset -5px -5px 10px #9cb2da;
+    box-shadow: 8px 8px 15px var(--main-border-color), -8px -8px 15px #9cb2da,
+      inset 5px 5px 10px var(--main-border-color), inset -5px -5px 10px #9cb2da;
   }
 
   .calendar__form-submit:hover,
   .calendar__form-submit:focus {
     background: #9cb2da;
-    box-shadow: 5px 5px 10px #7a8baa, -5px -5px 10px #9cb2da,
-      inset 2px 2px 5px #7a8baa, inset -2px -2px 5px #9cb2da;
+    box-shadow: 5px 5px 10px var(--main-border-color), -5px -5px 10px #9cb2da,
+      inset 2px 2px 5px var(--main-border-color), inset -2px -2px 5px #9cb2da;
   }
 
   .calendar__form-submit:active {
-    background: #7a8baa;
-    box-shadow: inset 5px 5px 10px #7a8baa, inset -5px -5px 10px #9cb2da;
+    background: var(--main-border-color);
+    box-shadow: inset 5px 5px 10px var(--main-border-color),
+      inset -5px -5px 10px #9cb2da;
   }
 `;

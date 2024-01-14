@@ -12,7 +12,7 @@ export const StyledCalendar = styled.section`
   font-size: 16px;
   width: 50vw;
   max-width: 700px;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   background: linear-gradient(45deg, #bbd3f0, #95d4e1);
   box-shadow: inset 6px 6px 10px #a0b1c3, inset -6px -6px 10px #d0e4ff;
   background-size: 400% 400%;
@@ -20,7 +20,7 @@ export const StyledCalendar = styled.section`
 
   .calendar__heading {
     font-size: 26px;
-    color: #333;
+    color: var(--main-font-color);
     font-weight: bold;
     text-align: center;
     margin-bottom: 1rem;
@@ -41,8 +41,9 @@ export const StyledLoading = styled.div`
     height: 64px;
     margin: 8px;
     border-radius: 50%;
-    border: 6px solid #7a8baa;
-    border-color: #7a8baa transparent #7a8baa transparent;
+    border: 6px solid var(--main-border-color);
+    border-color: var(--main-border-color) transparent var(--main-border-color)
+      transparent;
     animation: ${loadingAnimation} 1.2s linear infinite;
   }
 `;
