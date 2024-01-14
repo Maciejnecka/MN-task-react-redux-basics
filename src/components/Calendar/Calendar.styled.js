@@ -11,6 +11,7 @@ export const StyledCalendar = styled.section`
   padding: 20px;
   font-size: 16px;
   width: 50vw;
+  max-width: 700px;
   border-radius: 6px;
   background: linear-gradient(45deg, #bbd3f0, #95d4e1);
   box-shadow: inset 6px 6px 10px #a0b1c3, inset -6px -6px 10px #d0e4ff;
@@ -21,13 +22,10 @@ export const StyledCalendar = styled.section`
     font-size: 26px;
     color: #333;
     font-weight: bold;
-    width: 50%;
     text-align: center;
     margin-bottom: 1rem;
     padding: 6px;
     border-radius: 4px;
-    background-color: #9cb2da;
-    box-shadow: 1px 1px 3px #a0b1c3;
   }
 `;
 

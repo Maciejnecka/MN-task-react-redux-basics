@@ -1,14 +1,6 @@
 {
   "meetings": [
     {
-      "date": "2024-01-26",
-      "time": "15:21",
-      "firstName": "Maciej",
-      "lastName": "Nęcka",
-      "email": "macieknecka@gmail.com",
-      "id": 21
-    },
-    {
       "date": "2024-01-19",
       "time": "12:43",
       "firstName": "Maciej",

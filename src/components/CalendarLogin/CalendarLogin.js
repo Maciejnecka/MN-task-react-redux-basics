@@ -35,7 +35,7 @@ class CalendarLogin extends React.Component {
         onSubmit={this.handleSubmit}
       >
         <div className="calendar__login-message">Log in to display list</div>
-        <p>
+        <p className="calendar__login-data">
           Login: admin
           <br />
           Hasło: admin

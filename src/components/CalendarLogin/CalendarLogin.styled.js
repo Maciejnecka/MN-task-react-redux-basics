@@ -23,7 +23,9 @@ export const StyledCalendarLogin = styled.form`
     box-shadow: 1px 1px 3px #a0b1c3;
     animation: ${pulseMessage} 2s infinite;
   }
-
+  .calendar__login-data {
+    margin: 5px;
+  }
   .calendar__login-field {
     margin-bottom: 15px;
     padding: 10px 20px;

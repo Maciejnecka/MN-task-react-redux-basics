@@ -17,7 +17,7 @@ class Calendar extends React.Component {
   state = {
     isLoading: false,
     // Temp false for true
-    isLoggedIn: false,
+    isLoggedIn: true,
     isLoggingIn: false,
     isLoggingOut: false,
   };
