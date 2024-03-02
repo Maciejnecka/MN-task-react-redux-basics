@@ -1,5 +1,6 @@
 import React from 'react';
 import validateFormFields from '../utilities/formValidator';
+import formFields from '../../definitions/formFieldDefinitions';
 import { StyledCalendarForm } from './CalendarForm.styled';
 import StyledCustomInput from '../CustomInput';
 
@@ -13,24 +14,6 @@ class CalendarForm extends React.Component {
     errors: {},
   };
 
-  formFields = [
-    { name: 'date', type: 'date', label: 'Data', placeholder: 'RRRR-MM-DD' },
-    {
-      name: 'time',
-      type: 'time',
-      label: 'Godzina',
-      placeholder: 'HH:MM',
-    },
-    { name: 'firstName', label: 'Imię', placeholder: 'Imię' },
-    { name: 'lastName', label: 'Nazwisko', placeholder: 'Nazwisko' },
-    {
-      name: 'email',
-      type: 'email',
-      label: 'Email',
-      placeholder: 'nazwa@poczty.pl',
-    },
-  ];
-
   render() {
     return (
       <StyledCalendarForm
@@ -38,7 +21,7 @@ class CalendarForm extends React.Component {
         action=""
         onSubmit={this.handleSubmit}
       >
-        {this.formFields.map((field) => (
+        {formFields.map((field) => (
           <div key={field.name} className="calendar__form-field">
             <label htmlFor={field.name} className="calendar__form-label">
               {field.label}:{' '}
@@ -85,21 +68,23 @@ class CalendarForm extends React.Component {
 
   validateForm() {
     const formData = {};
-    this.formFields.forEach((field) => {
+    formFields.forEach((field) => {
       formData[field.name] = this.state[field.name];
     });
 
-    return validateFormFields(formData);
+    return validateFormFields(formData, formFields);
   }
 
   handleFieldChange = (e) => {
     const fieldName = e.target.name;
-
     if (this.isFieldNameCorrect(fieldName)) {
       const value = e.target.value;
       const errors = { ...this.state.errors };
 
-      const fieldErrors = validateFormFields({ [fieldName]: value });
+      const fieldErrors = validateFormFields(
+        { [fieldName]: value },
+        formFields
+      );
 
       errors[fieldName] = fieldErrors[fieldName] || null;
 
@@ -132,7 +117,7 @@ class CalendarForm extends React.Component {
 
   getFieldsData() {
     const fieldsData = {};
-    this.formFields.forEach((field) => {
+    formFields.forEach((field) => {
       fieldsData[field.name] = this.state[field.name];
     });
 
@@ -140,7 +125,7 @@ class CalendarForm extends React.Component {
   }
 
   isFieldNameCorrect(name) {
-    return this.formFields.some((field) => field.name === name);
+    return formFields.some((field) => field.name === name);
   }
 
   renderErrors() {
