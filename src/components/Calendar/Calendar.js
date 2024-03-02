@@ -66,38 +66,38 @@ class Calendar extends React.Component {
     const { meetings } = this.props;
     const { isLoading, isLoggedIn, isLoggingIn, isLoggingOut } = this.state;
 
+    let content;
+
+    if (isLoggingIn || isLoggingOut || isLoading) {
+      content = <StyledLoading className="calendar__loading" />;
+    } else if (!isLoggedIn) {
+      content = (
+        <>
+          <StyledCalendarLogin onLoginSuccess={this.handleLogin} />
+        </>
+      );
+    } else {
+      content = (
+        <>
+          <CalendarList
+            meetings={meetings}
+            deleteMeeting={this.deleteMeetingFromApi}
+          />
+          <CustomButtonLog
+            text="Wyloguj"
+            className="calendar__logout"
+            onClick={this.handleLogout}
+            marginSize="large"
+          />
+        </>
+      );
+    }
+
     return (
       <StyledCalendar className="calendar">
         <h1 className="calendar__heading">React Redux Calendar</h1>
         <CalendarForm saveMeeting={this.sendMeetingToApi} />
-        {isLoggingIn || isLoggingOut ? (
-          <StyledLoading className="calendar__loading" />
-        ) : !isLoggedIn ? (
-          <>
-            <StyledCalendarLogin onLoginSuccess={this.handleLogin} />
-          </>
-        ) : (
-          <>
-            {isLoading ? (
-              <StyledLoading className="calendar__loading" />
-            ) : (
-              <CalendarList
-                meetings={meetings}
-                deleteMeeting={this.deleteMeetingFromApi}
-              />
-            )}
-
-            {isLoading && (
-              <StyledLoading className="calendar__loading-between" />
-            )}
-            <CustomButtonLog
-              text="Wyloguj"
-              className="calendar__logout"
-              onClick={this.handleLogout}
-              marginSize="large"
-            />
-          </>
-        )}
+        {content}
       </StyledCalendar>
     );
   }
